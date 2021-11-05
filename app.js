@@ -37,21 +37,33 @@ app.get("/api", (req, res) => {
   });
 });
 //listar
-//listar uno solo
-/*
-app.get('/api/usuarios/:id', (req, res)=>{
-    conexion.query('SELECT * FROM usuarios where id = ?', [req.params.id],(error, fila)=>{
-        if (error) {
-            throw error;
-        }else{
-            res.send(fila);
-            //res.send(fila[0].nombre);
-            
-        }
-    })
+
+//listar
+app.get("/api/usuarios", (req, res) => {
+  conexion.query("SELECT * FROM usuarios", (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
+    }
+  });
 });
-*/
+//listar
+
 //listar uno solo
+app.get("/api/usuarios/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `SELECT * FROM usuarios WHERE id = ${id}`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
+    }
+  });
+});
+//listar uno solo
+
 // crear informacion
 app.post("/api", (req, res) => {
   let data = {
@@ -252,3 +264,7 @@ const puerto = process.env.PORT || 3000;
 app.listen(puerto, function () {
   console.log("servidor ok en puerto " + puerto);
 });
+
+//Ultimos cuatro
+
+//Uitmos cuatro
