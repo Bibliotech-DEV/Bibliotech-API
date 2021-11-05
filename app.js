@@ -267,7 +267,7 @@ app.listen(puerto, function () {
 });
 
 //Ult articulos
-app.get("/api/articulos/reciente", (req, res) => {
+app.get("/api/articulos_recientes", (req, res) => {
   const sql = "SELECT * FROM articulos ORDER by id DESC LIMIT 0,4";
   conexion.query(sql, (error, results) => {
     if (error) throw error;
@@ -281,13 +281,14 @@ app.get("/api/articulos/reciente", (req, res) => {
 //Ult articulos
 
 //Ult usuarios
-app.get("/api/usuarios/reciente", (req, res) => {
-  const sql = `SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4`;
-  conexion.query(sql, (error, filas) => {
-    if (error) {
-      throw error;
+app.get("/api/usuarios_recientes", (req, res) => {
+  const sql = "SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4";
+  conexion.query(sql, (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.json(results);
     } else {
-      res.send(filas);
+      res.send("No result");
     }
   });
 });
