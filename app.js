@@ -40,7 +40,8 @@ app.get("/api", (req, res) => {
 
 //listar
 app.get("/api/usuarios", (req, res) => {
-  conexion.query("SELECT * FROM usuarios", (error, filas) => {
+  const sql = `SELECT * FROM usuarios`;
+  conexion.query(sql, (error, filas) => {
     if (error) {
       throw error;
     } else {
