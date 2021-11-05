@@ -267,5 +267,28 @@ app.listen(puerto, function () {
 });
 
 //Ultimos cuatro
-
+app.get("/api/articulos/reciente", (req, res) => {
+  conexion.query(
+    "SELECT * FROM articulos ORDER by id DESC LIMIT 0,4;",
+    (error, filas) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send(filas);
+      }
+    }
+  );
+});
+app.get("/api/usuarios/reciente", (req, res) => {
+  conexion.query(
+    "SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4;",
+    (error, filas) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send(filas);
+      }
+    }
+  );
+});
 //Uitmos cuatro
