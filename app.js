@@ -144,18 +144,15 @@ app.get("/api/articulos", (req, res) => {
 
 //listar uno solo
 app.get("/api/articulos/:id", (req, res) => {
-  conexion.query(
-    "SELECT * FROM articulos where id = ?",
-    [req.params.id],
-    (error, fila) => {
-      if (error) {
-        throw error;
-      } else {
-        res.send(fila);
-        //res.send(fila[0].nombre);
-      }
+  const { id } = req.params;
+  const sql = `SELECT * FROM articulos WHERE id = ${id}`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
     }
-  );
+  });
 });
 //listar uno solo
 
