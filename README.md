@@ -1,12 +1,9 @@
 ![Logo](/BibliotechWeb/assets/images/logo-minimal.png) 
 
-## Desarrollo de software - Ciclo 3 MISIONTIC
+## API del sitio web Bibliotech
 
 Hola!
-
-Este repositorio alojará el desarrollo de un servicio Web de prestamos para pequeñas bibliotecas o centros culturales comuntarios. 
-
-Este recurso nace de la unión de varios saberes y voluntades.
+Este recurso nace de la unión de varios saberes y voluntades, en este repositorio se aloja la API que hace puente con el FrontEnd de nuestro sitio. 
 
 <br/>
 
@@ -20,5 +17,13 @@ Equipo de desarrollo:
 * [Kelly Monroy Carrillo](https://github.com/muakarada)
 > Buenas lecturas :)
 
+#
+Para probar la API de forma local seguir los siguientes pasos:
 
+### Instalación
+`npm install`
 
+<br/>
+
+### Ejecución
+`npm run server`
