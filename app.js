@@ -142,6 +142,23 @@ app.get("/api/articulos", (req, res) => {
 });
 //listar
 
+//listar uno solo
+app.get("/api/articulos/:id", (req, res) => {
+  conexion.query(
+    "SELECT * FROM articulos where id = ?",
+    [req.params.id],
+    (error, fila) => {
+      if (error) {
+        throw error;
+      } else {
+        res.send(fila);
+        //res.send(fila[0].nombre);
+      }
+    }
+  );
+});
+//listar uno solo
+
 // crear informacion
 app.post("/api/articulos", (req, res) => {
   let data = {
