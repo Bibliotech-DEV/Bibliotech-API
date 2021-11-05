@@ -266,29 +266,28 @@ app.listen(puerto, function () {
   console.log("servidor ok en puerto " + puerto);
 });
 
-//Ultimos cuatro
+//Ult articulos
 app.get("/api/articulos/reciente", (req, res) => {
-  conexion.query(
-    "SELECT * FROM articulos ORDER by id DESC LIMIT 0,4;",
-    (error, filas) => {
-      if (error) {
-        throw error;
-      } else {
-        res.send(filas);
-      }
+  const sql = `SELECT * FROM articulos ORDER by id DESC LIMIT 0,4`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
     }
-  );
+  });
 });
+//Ult articulos
+
+//Ult usuarios
 app.get("/api/usuarios/reciente", (req, res) => {
-  conexion.query(
-    "SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4;",
-    (error, filas) => {
-      if (error) {
-        throw error;
-      } else {
-        res.send(filas);
-      }
+  const sql = `SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
     }
-  );
+  });
 });
-//Uitmos cuatro
+//Ult usuarios
