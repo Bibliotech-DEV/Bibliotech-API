@@ -268,12 +268,13 @@ app.listen(puerto, function () {
 
 //Ult articulos
 app.get("/api/articulos/reciente", (req, res) => {
-  const sql = `SELECT * FROM articulos ORDER by id DESC LIMIT 0,4`;
-  conexion.query(sql, (error, filas) => {
-    if (error) {
-      throw error;
+  const sql = "SELECT * FROM articulos ORDER by id DESC LIMIT 0,4";
+  conexion.query(sql, (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.json(results);
     } else {
-      res.send(filas);
+      res.send("No result");
     }
   });
 });
