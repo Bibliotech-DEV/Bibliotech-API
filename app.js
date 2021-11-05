@@ -37,21 +37,34 @@ app.get("/api", (req, res) => {
   });
 });
 //listar
-//listar uno solo
-/*
-app.get('/api/usuarios/:id', (req, res)=>{
-    conexion.query('SELECT * FROM usuarios where id = ?', [req.params.id],(error, fila)=>{
-        if (error) {
-            throw error;
-        }else{
-            res.send(fila);
-            //res.send(fila[0].nombre);
-            
-        }
-    })
+
+//listar
+app.get("/api/usuarios", (req, res) => {
+  const sql = `SELECT * FROM usuarios`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
+    }
+  });
 });
-*/
+//listar
+
 //listar uno solo
+app.get("/api/usuarios/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `SELECT * FROM usuarios WHERE id = ${id}`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
+    }
+  });
+});
+//listar uno solo
+
 // crear informacion
 app.post("/api", (req, res) => {
   let data = {
@@ -141,6 +154,20 @@ app.get("/api/articulos", (req, res) => {
   });
 });
 //listar
+
+//listar uno solo
+app.get("/api/articulos/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `SELECT * FROM articulos WHERE id = ${id}`;
+  conexion.query(sql, (error, filas) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send(filas);
+    }
+  });
+});
+//listar uno solo
 
 // crear informacion
 app.post("/api/articulos", (req, res) => {
@@ -238,3 +265,31 @@ const puerto = process.env.PORT || 3000;
 app.listen(puerto, function () {
   console.log("servidor ok en puerto " + puerto);
 });
+
+//Ult articulos
+app.get("/api/articulos_recientes", (req, res) => {
+  const sql = "SELECT * FROM articulos ORDER by id DESC LIMIT 0,4";
+  conexion.query(sql, (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.json(results);
+    } else {
+      res.send("No result");
+    }
+  });
+});
+//Ult articulos
+
+//Ult usuarios
+app.get("/api/usuarios_recientes", (req, res) => {
+  const sql = "SELECT * FROM usuarios ORDER by id DESC LIMIT 0,4";
+  conexion.query(sql, (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.json(results);
+    } else {
+      res.send("No result");
+    }
+  });
+});
+//Ult usuarios
