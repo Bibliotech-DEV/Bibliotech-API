@@ -22,7 +22,7 @@ conexion.connect(function (error) {
 });
 //conexion
 app.get("/", function (req, res) {
-  res.send("ruta de inicio");
+  res.status(200).send("ruta de inicio");
 });
 
 //------------------------------------------------------------administrador---------------------------------------
@@ -32,7 +32,7 @@ app.get("/api", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -45,7 +45,7 @@ app.get("/api/usuarios", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -59,7 +59,7 @@ app.get("/api/usuarios/:id", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -80,7 +80,7 @@ app.post("/api", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(results);
+      res.status(200).send(results);
     }
   });
 });
@@ -104,7 +104,7 @@ app.put("/api/:id", (req, res) => {
       if (error) {
         throw error;
       } else {
-        res.send(results);
+        res.status(200).send(results);
       }
     }
   );
@@ -119,7 +119,7 @@ app.delete("/api/:id", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -149,7 +149,7 @@ app.get("/api/articulos", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -163,7 +163,7 @@ app.get("/api/articulos/:id", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(filas);
+      res.status(200).send(filas);
     }
   });
 });
@@ -185,7 +185,7 @@ app.post("/api/articulos", (req, res) => {
     if (error) {
       throw error;
     } else {
-      res.send(results);
+      res.status(200).send(results);
     }
   });
 });
@@ -218,7 +218,7 @@ app.put("/api/articulos/:id", (req, res) => {
       if (error) {
         throw error;
       } else {
-        res.send(results);
+        res.status(200).send(results);
       }
     }
   );
@@ -236,7 +236,7 @@ app.delete("/api/articulos/:id", (req, res) => {
       if (error) {
         throw error;
       } else {
-        res.send(results);
+        res.status(200).send(results);
       }
     }
   );
@@ -252,7 +252,7 @@ app.get("/categorias/:nombre_categoria", (req, res) => {
       if (error) {
         throw error;
       } else {
-        res.send(fila);
+        res.status(200).send(fila);
       }
     }
   );
@@ -272,7 +272,7 @@ app.get("/api/articulos_recientes", (req, res) => {
   conexion.query(sql, (error, results) => {
     if (error) throw error;
     if (results.length > 0) {
-      res.json(results);
+      res.status(200).json(results);
     } else {
       res.send("No result");
     }
@@ -286,7 +286,7 @@ app.get("/api/usuarios_recientes", (req, res) => {
   conexion.query(sql, (error, results) => {
     if (error) throw error;
     if (results.length > 0) {
-      res.json(results);
+      res.status(200).json(results);
     } else {
       res.send("No result");
     }
