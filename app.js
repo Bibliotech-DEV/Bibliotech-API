@@ -7,10 +7,10 @@ app.use(cors());
 
 //conexion
 var conexion = mysql.createConnection({
-  host: "mysql-bibliotechapp.alwaysdata.net",
-  user: "247716_admin",
-  password: "Biblio789T",
-  database: "bibliotechapp_database",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 conexion.connect(function (error) {
